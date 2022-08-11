@@ -6,16 +6,19 @@ import com.ua.englishschool.users.model.UserEntity
 import com.ua.englishschool.users.repository.UserRepository
 import com.ua.englishschool.users.services.UserService
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import java.util.stream.Collectors
 
 @Service
 class UserServiceImpl(
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val passwordEncoder: BCryptPasswordEncoder
 ) : UserService {
     override fun save(registrationDto: RegistrationUserDto): UserDto {
         val userEntity = UserEntity(
-            registrationDto.username, registrationDto.password
+            registrationDto.username,
+            passwordEncoder.encode(registrationDto.password)
         )
         val userSaved = userRepository.save(userEntity)
         return UserDto.toDto(userSaved)

@@ -7,10 +7,14 @@ import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
 
 @Service
-abstract class JwtUserDetailService(
+class JwtUserDetailService(
     private val userService: UserService
 ) : UserDetailsService {
     fun loadUserByUserId(userId: Long): UserDetails? {
         return userService.findById(userId)?.let(JwtUserFactory.Companion::createJwtUser)
+    }
+
+    override fun loadUserByUsername(username: String?): UserDetails? {
+        return null
     }
 }
