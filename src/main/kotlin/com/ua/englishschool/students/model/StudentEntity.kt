@@ -3,6 +3,8 @@ package com.ua.englishschool.students.model
 import com.ua.englishschool.users.model.BaseEntity
 import com.ua.englishschool.users.model.Status
 import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
 import javax.persistence.Table
 
 @Entity
@@ -12,6 +14,7 @@ class StudentEntity(
     var lastName: String,
     var phone: String,
     var email: String,
+    @Enumerated(EnumType.STRING)
     var level: Level? = Level.FIRST,
 
     id: Long? = null,
