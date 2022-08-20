@@ -12,7 +12,7 @@ class GlobalHandlerInterceptor : HandlerInterceptor {
         if (!authentication.isAuthenticated) {
             return false
         }
-
+        // TODO write logic of check user status
         return true
     }
 }
