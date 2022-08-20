@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse
 class GlobalHandlerInterceptor : HandlerInterceptor {
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         val authentication = SecurityContextHolder.getContext().authentication
-        if (!authentication.isAuthenticated) {
-            return false
+        if (authentication.isAuthenticated) {
+            val userDetails = authentication.principal as UserDetails
+            return userDetails.isEnabled
         }
-        // TODO write logic of check user status
         return true
     }
 }
