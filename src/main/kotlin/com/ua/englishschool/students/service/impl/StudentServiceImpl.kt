@@ -42,13 +42,26 @@ class StudentServiceImpl(
     }
 
     override fun findAll(): List<StudentDto> {
-        val students = studentRepository.findAll();
+        val students = studentRepository.findAll()
         return toListOfDto(students)
     }
 
     override fun findAllByLevel(level: Level): List<StudentDto> {
         val students = studentRepository.findAllByLevel(level)
         return toListOfDto(students)
+    }
+
+    override fun update(studentDto: StudentDto): StudentDto? {
+        val studentId = studentDto.id ?: return null
+        val studentToUpdate = studentRepository.findByIdOrNull(studentId) ?: return null
+        with(studentToUpdate) {
+            firstName = studentDto.firstName
+            lastName = studentDto.lastName
+            phone = studentDto.phone
+            email = studentDto.email
+            level = studentDto.level
+        }
+        return StudentDto.toDto(studentRepository.save(studentToUpdate))
     }
 
     private fun toListOfDto(students: List<StudentEntity>): List<StudentDto> {

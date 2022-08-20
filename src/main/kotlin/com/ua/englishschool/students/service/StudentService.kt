@@ -10,4 +10,5 @@ interface StudentService {
     fun findAllByLevel(level: Level): List<StudentDto>
     fun findByPhone(phone: String): StudentDto?
     fun findByEmail(email: String): StudentDto?
+    fun update(studentDto: StudentDto): StudentDto?
 }
