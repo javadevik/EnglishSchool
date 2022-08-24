@@ -1,6 +1,6 @@
 package com.ua.englishschool.users.services.impl
 
-import com.ua.englishschool.users.dto.RegistrationResponseDto
+import com.ua.englishschool.users.dto.RegistrationRequestDto
 import com.ua.englishschool.users.dto.UserDto
 import com.ua.englishschool.users.model.UserEntity
 import com.ua.englishschool.users.repository.UserRepository
@@ -15,7 +15,7 @@ class UserServiceImpl(
     private val userRepository: UserRepository,
     private val passwordEncoder: BCryptPasswordEncoder
 ) : UserService {
-    override fun save(registrationDto: RegistrationResponseDto): UserDto {
+    override fun save(registrationDto: RegistrationRequestDto): UserDto {
         val userEntity = UserEntity(
             registrationDto.username,
             passwordEncoder.encode(registrationDto.password)

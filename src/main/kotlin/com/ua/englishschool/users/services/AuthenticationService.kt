@@ -7,5 +7,5 @@ import com.ua.englishschool.users.dto.RegistrationResponseDto
 
 interface AuthenticationService {
     fun login(requestDto: AuthenticationRequestDto): AuthenticationResponseDto?
-    fun registrate(registrationRequest: RegistrationRequestDto): RegistrationResponseDto?
+    fun registration(registrationRequest: RegistrationRequestDto): RegistrationResponseDto
 }

@@ -30,7 +30,8 @@ class AuthenticationServiceImpl(
         return AuthenticationResponseDto(user.id, requestUsername, token)
     }
 
-    override fun registrate(registrationRequest: RegistrationRequestDto): RegistrationResponseDto? {
+    override fun registration(registrationRequest: RegistrationRequestDto): RegistrationResponseDto {
+        val userDto = userService.save(registrationRequest)
         return null
     }
 }
