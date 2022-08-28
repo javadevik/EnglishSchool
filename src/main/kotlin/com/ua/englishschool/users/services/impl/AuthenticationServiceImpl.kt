@@ -32,6 +32,6 @@ class AuthenticationServiceImpl(
 
     override fun registration(registrationRequest: RegistrationRequestDto): RegistrationResponseDto {
         val userDto = userService.save(registrationRequest)
-        return null
+        return RegistrationResponseDto(userDto.id, userDto.username)
     }
 }

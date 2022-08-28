@@ -9,4 +9,5 @@ interface UserRepository : JpaRepository<UserEntity, Long> {
     override fun findAll(): List<UserEntity>
     @Query(value = "UPDATE users SET status = NOT_ACTIVE WHERE id = ?1", nativeQuery = true)
     fun setNotActiveStatus(userId: Long)
+    fun existsByUsername(username: String): Boolean
 }

@@ -42,6 +42,10 @@ class UserServiceImpl(
             .map(UserDto.Companion::toDto).collect(Collectors.toList())
     }
 
+    override fun isUsernameAlreadyUse(username: String): Boolean {
+        return userRepository.existsByUsername(username)
+    }
+
     override fun setNotActiveStatus(userId: Long) {
         userRepository.setNotActiveStatus(userId)
     }

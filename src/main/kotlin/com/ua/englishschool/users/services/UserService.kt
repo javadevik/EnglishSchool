@@ -10,4 +10,5 @@ interface UserService {
     fun findByUsername(username: String): UserDto?
     fun findAll(): List<UserDto>
     fun setNotActiveStatus(userId: Long)
+    fun isUsernameAlreadyUse(username: String): Boolean
 }
