@@ -12,7 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.stereotype.Component
 
 interface UserLoginUseCase {
-    fun login(authenticationRequest: AuthenticationDto): Either<OperationError, AuthenticationResponse>
+    fun login(authenticationRequest: AuthenticationRequest): Either<OperationError, AuthenticationResponse>
 }
 
 @Component
@@ -21,7 +21,7 @@ class UserLoginUseCaseBean(
         private val jwtTokenProvider: JwtTokenProvider,
         private val authenticationManager: AuthenticationManager
 ): UserLoginUseCase {
-    override fun login(authenticationRequest: AuthenticationDto): Either<OperationError, AuthenticationResponse> {
+    override fun login(authenticationRequest: AuthenticationRequest): Either<OperationError, AuthenticationResponse> {
         val requestUsername = authenticationRequest.username
         val requestPassword = authenticationRequest.password
 

@@ -1,11 +1,14 @@
 package com.ua.englishschool.users.web
 
-import com.ua.englishschool.users.domain.UserLoginUseCase
-import com.ua.englishschool.users.domain.UserRegistrationUseCase
-import org.springframework.http.HttpStatus
+import arrow.core.Either
+import com.ua.englishschool.common.dto.ResponseDto
+import com.ua.englishschool.common.dto.SuccessResponseDto
+import com.ua.englishschool.common.mapErrors
+import com.ua.englishschool.users.domain.*
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.annotation.Secured
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -16,13 +19,23 @@ class UserController(
     private val userRegistrationUseCase: UserRegistrationUseCase
 ) {
     @GetMapping("/sign-in")
-    fun signIn(): ResponseEntity<*> {
-        return ResponseEntity("Welcome to login end-point!", HttpStatus.OK)
+    fun signIn(
+            @RequestBody authenticationRequest: AuthenticationRequest
+    ): ResponseEntity<ResponseDto<AuthenticationResponse?>> {
+        return when(val result = userLoginUseCase.login(authenticationRequest)) {
+            is Either.Left -> mapErrors(result.value)
+            is Either.Right -> ResponseEntity.ok(SuccessResponseDto(result.value))
+        }
     }
 
     @Secured("ROLE_ADMIN")
     @GetMapping("/sign-up")
-    fun signUp(): ResponseEntity<*> {
-        return ResponseEntity("Only for users with admin role", HttpStatus.OK)
+    fun signUp(
+            @RequestBody registrationRequest: RegistrationRequest
+    ): ResponseEntity<ResponseDto<UserDetails>> {
+        return when (val result = userRegistrationUseCase.registration(registrationRequest)) {
+            is Either.Left -> mapErrors(result.value)
+            is Either.Right -> ResponseEntity.ok(SuccessResponseDto(result.value))
+        }
     }
 }

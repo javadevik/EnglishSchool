@@ -1,3 +1,3 @@
 package com.ua.englishschool.common.errors
 
-class AlreadyExistsError(message: String) : OperationError
+class AlreadyExistsError(val message: String) : OperationError
