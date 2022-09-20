@@ -1,21 +1,21 @@
 package com.ua.englishschool.users.security.jwt
 
-import com.ua.englishschool.users.dto.UserDto
-import com.ua.englishschool.users.model.Role
-import com.ua.englishschool.users.model.Status.ACTIVE
+import com.ua.englishschool.users.domain.UserDetails
+import com.ua.englishschool.users.storage.Role
+import com.ua.englishschool.users.storage.Status.ACTIVE
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import java.util.stream.Collectors
 
 class JwtUserFactory {
     companion object {
-        fun createJwtUser(userDto: UserDto): JwtUser {
+        fun createJwtUser(userDetails: UserDetails): JwtUser {
             return JwtUser(
-                userDto.id,
-                userDto.username,
-                userDto.password,
-                userDto.status == ACTIVE,
-                toSetOfGrantedAuthorities(userDto.roles)
+                userDetails.id,
+                userDetails.username,
+                userDetails.password,
+                userDetails.status == ACTIVE,
+                toSetOfGrantedAuthorities(userDetails.roles)
             )
         }
 

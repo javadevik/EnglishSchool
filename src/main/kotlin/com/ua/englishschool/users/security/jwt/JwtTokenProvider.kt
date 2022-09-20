@@ -1,8 +1,7 @@
 package com.ua.englishschool.users.security.jwt
 
-import com.ua.englishschool.users.dto.UserDto
+import com.ua.englishschool.users.domain.UserDetails
 import com.ua.englishschool.users.security.JwtUserDetailService
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
@@ -27,8 +26,8 @@ class JwtTokenProvider(
         secret = Base64.getEncoder().encodeToString(secret.toByteArray())
     }
 
-    fun createToken(userDto: UserDto): String {
-        val userId = userDto.id.toString()
+    fun createToken(userDetails: UserDetails): String {
+        val userId = userDetails.id.toString()
         val now = clock.millis()
         val validity = now + 3600000
 

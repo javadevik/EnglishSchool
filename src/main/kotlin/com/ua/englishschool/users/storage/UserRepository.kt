@@ -1,6 +1,6 @@
-package com.ua.englishschool.users.repository
+package com.ua.englishschool.users.storage
 
-import com.ua.englishschool.users.model.UserEntity
+import com.ua.englishschool.users.storage.UserEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 

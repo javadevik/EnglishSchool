@@ -1,11 +1,11 @@
-package com.ua.englishschool.users.dto
+package com.ua.englishschool.users.domain
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import com.ua.englishschool.users.model.Role
-import com.ua.englishschool.users.model.Status
-import com.ua.englishschool.users.model.UserEntity
+import com.ua.englishschool.users.storage.Role
+import com.ua.englishschool.users.storage.Status
+import com.ua.englishschool.users.storage.UserEntity
 
-class UserDto(
+class UserDetails(
     val id: Long,
 
     val username: String,
@@ -20,8 +20,8 @@ class UserDto(
     val roles: Set<Role>,
 ) {
     companion object {
-        fun toDto(userEntity: UserEntity): UserDto {
-            return UserDto(
+        fun toDto(userEntity: UserEntity): UserDetails {
+            return UserDetails(
                 userEntity.id!!,
                 userEntity.username,
                 userEntity.password,

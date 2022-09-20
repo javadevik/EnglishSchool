@@ -1,4 +1,4 @@
-package com.ua.englishschool.users.model
+package com.ua.englishschool.users.storage
 
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate

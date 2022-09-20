@@ -1,7 +1,7 @@
 package com.ua.englishschool.students.model
 
-import com.ua.englishschool.users.model.BaseEntity
-import com.ua.englishschool.users.model.Status
+import com.ua.englishschool.users.storage.BaseEntity
+import com.ua.englishschool.users.storage.Status
 import javax.persistence.Entity
 import javax.persistence.Table
 

@@ -24,6 +24,7 @@ dependencies {
 	implementation("io.ktor:ktor-auth:1.6.8")
 	implementation("io.ktor:ktor-auth-jwt:1.6.8")
 	implementation("org.hibernate:hibernate-validator:8.0.0.CR3")
+	implementation("io.arrow-kt:arrow-core:1.0.1")
 	//implementation("org.flywaydb:flyway-core")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
