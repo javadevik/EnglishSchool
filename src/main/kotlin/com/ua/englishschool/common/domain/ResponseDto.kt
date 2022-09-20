@@ -1,4 +1,4 @@
-package com.ua.englishschool.common.dto
+package com.ua.englishschool.common.domain
 
 open class ResponseDto<T>(
         val success: Boolean,

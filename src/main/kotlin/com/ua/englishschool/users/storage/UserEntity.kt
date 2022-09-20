@@ -1,5 +1,6 @@
 package com.ua.englishschool.users.storage
 
+import com.ua.englishschool.common.storage.BaseEntity
 import javax.persistence.*
 
 @Entity
@@ -13,11 +14,10 @@ class UserEntity(
     @Enumerated(EnumType.STRING)
     var roles: Set<Role>? = mutableSetOf(Role.STUDENT),
 
-    id: Long? = null,
-    createdDate: Long? = null,
-    updatedDate: Long? = null,
-    status: Status? = Status.ACTIVE,
-) : BaseEntity(id, createdDate, updatedDate, status) {
+    @Enumerated(EnumType.STRING)
+    var status: Status? = Status.ACTIVE,
+
+) : BaseEntity() {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

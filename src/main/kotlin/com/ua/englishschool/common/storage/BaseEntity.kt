@@ -1,4 +1,4 @@
-package com.ua.englishschool.users.storage
+package com.ua.englishschool.common.storage
 
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
@@ -10,16 +10,13 @@ import javax.persistence.*
 abstract class BaseEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    open var id: Long? = null,
+    var id: Long? = null,
 
     @CreatedDate
     @Column(name = "created_at")
-    open var createdDate: Long? = null,
+    var createdDate: Long? = null,
 
     @LastModifiedDate
     @Column(name = "last_modified_at")
-    open var updatedDate: Long? = null,
-
-    @Enumerated(EnumType.STRING)
-    open var status: Status? = Status.ACTIVE
+    var updatedDate: Long? = null
 )

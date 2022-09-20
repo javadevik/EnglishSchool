@@ -1,11 +1,11 @@
 package com.ua.englishschool.students.dto
 
-import com.ua.englishschool.students.model.Level
-import com.ua.englishschool.students.model.StudentEntity
+import com.ua.englishschool.students.storage.Level
+import com.ua.englishschool.students.storage.StudentEntity
 import javax.validation.constraints.Email
 import javax.validation.constraints.Pattern
 
-class StudentDto(
+class StudentDetails(
     val id: Long?,
     val firstName: String,
     val lastName: String,
@@ -16,8 +16,8 @@ class StudentDto(
     val level: Level? = Level.FIRST,
 ) {
     companion object {
-        fun toDto(studentEntity: StudentEntity): StudentDto {
-            return StudentDto(
+        fun toDto(studentEntity: StudentEntity): StudentDetails {
+            return StudentDetails(
                 studentEntity.id,
                 studentEntity.firstName,
                 studentEntity.lastName,

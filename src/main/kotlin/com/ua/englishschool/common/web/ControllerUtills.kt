@@ -1,7 +1,7 @@
-package com.ua.englishschool.common
+package com.ua.englishschool.common.web
 
-import com.ua.englishschool.common.dto.ErrorResponseDto
-import com.ua.englishschool.common.dto.ResponseDto
+import com.ua.englishschool.common.domain.ErrorResponseDto
+import com.ua.englishschool.common.domain.ResponseDto
 import com.ua.englishschool.common.errors.AlreadyExistsError
 import com.ua.englishschool.common.errors.NotFoundError
 import com.ua.englishschool.common.errors.OperationError

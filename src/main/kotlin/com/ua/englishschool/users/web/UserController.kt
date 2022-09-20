@@ -1,8 +1,8 @@
 package com.ua.englishschool.users.web
 
 import arrow.core.Either
-import com.ua.englishschool.common.dto.ResponseDto
-import com.ua.englishschool.common.dto.SuccessResponseDto
+import com.ua.englishschool.common.domain.ResponseDto
+import com.ua.englishschool.common.domain.SuccessResponseDto
 import com.ua.englishschool.common.mapErrors
 import com.ua.englishschool.users.domain.*
 import org.springframework.http.ResponseEntity

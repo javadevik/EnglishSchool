@@ -1,24 +1,21 @@
-package com.ua.englishschool.students.model
+package com.ua.englishschool.students.storage
 
-import com.ua.englishschool.users.storage.BaseEntity
-import com.ua.englishschool.users.storage.Status
+import com.ua.englishschool.common.storage.BaseEntity
 import javax.persistence.Entity
 import javax.persistence.Table
 
 @Entity
 @Table(name = "students")
 class StudentEntity(
+        //TODO change student entity
     var firstName: String,
     var lastName: String,
     var phone: String,
     var email: String,
     var level: Level? = Level.FIRST,
+    val userId: Long? = null
 
-    id: Long? = null,
-    createdDate: Long? = null,
-    updatedDate: Long? = null,
-    status: Status? = Status.ACTIVE
-): BaseEntity(id, createdDate, updatedDate, status) {
+): BaseEntity() {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

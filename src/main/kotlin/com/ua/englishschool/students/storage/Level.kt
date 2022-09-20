@@ -1,4 +1,4 @@
-package com.ua.englishschool.students.model
+package com.ua.englishschool.students.storage
 
 enum class Level {
     FIRST,
